@@ -559,7 +559,7 @@ impl RenderRequestResolver {
                     RenderRequestEntry::TextureHash(_)
                     | RenderRequestEntry::DefaultSkinTextureHash(_)
                     | RenderRequestEntry::PlayerSkin(_, _) => None,
-                    RenderRequestEntry::MojangPlayerName(_) => Some(Uuid::new_v4()),
+                    RenderRequestEntry::MojangPlayerName(_) => None,
                 };
 
                 if let Some(uuid) = uuid {

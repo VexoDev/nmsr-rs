@@ -80,7 +80,7 @@ impl MojangClient {
     pub async fn resolve_name_to_uuid<'a>(&self, name: &'a str) -> MojangRequestResult<Uuid> {
         let url = format!(
             "{mojang_api_server}/users/profiles/minecraft/{encoded_name}",
-            mojang_api_server = self.mojank_config.mojang_api_server,
+            mojang_api_server = self.mojank_config.mojang_api_server.trim_end_matches('/'),
             encoded_name = urlencoding::encode(name)
         );
 
@@ -116,7 +116,7 @@ impl MojangClient {
 
         let url = format!(
             "{session_server}/session/minecraft/profile/{id_str}",
-            session_server = self.mojank_config.session_server
+            session_server = self.mojank_config.session_server.trim_end_matches('/')
         );
 
         let bytes = self
